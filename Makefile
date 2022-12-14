@@ -18,3 +18,5 @@ rabbitmq:
 	@bash components/rabbitmq.sh
 catalogue:
 	@bash components/catalogue.sh
+catlogue:
+	@bash components/catlogue.sh
