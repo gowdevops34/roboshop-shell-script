@@ -1,4 +1,4 @@
-curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash
 yum install nodejs -y
 
 useradd roboshop
@@ -16,7 +16,6 @@ npm install
 #   Update `MONGO_DNSNAME` with MongoDB Server IP
 #
 #2. Now, lets set up the service with systemctl.
-
 
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 systemctl daemon-reload
