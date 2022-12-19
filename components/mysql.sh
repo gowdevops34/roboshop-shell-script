@@ -3,10 +3,10 @@ yum install mysql-community-server -y
 systemctl enable mysqld
 systemctl start mysqld
 
-MYSQL_DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+#MYSQL_DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
 
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY "${MYSQL_PASSWORD}";" >/tmp/mysql
-mysql --connect-expired-password -uroot -p"${MYSQL_DEFAULT_PASSWORD}" </tmp/mysql
+#echo "ALTER USER 'root'@'localhost' IDENTIFIED BY "${MYSQL_PASSWORD}";" >/tmp/mysql
+#mysql --connect-expired-password -uroot -p"${MYSQL_DEFAULT_PASSWORD}" </tmp/mysql
 #1. Now a default root password will be generated and given in the log file.
 # grep temp /var/log/mysqld.log
 #1. Next, We need to change the default root password in order to start using the database service. Use password `RoboShop@1` or any other as per your choice. Rest of the options you can choose `No`
