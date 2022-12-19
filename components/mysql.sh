@@ -7,16 +7,7 @@ MYSQL_DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{p
 
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';" >/tmp/mysql
 mysql --connect-expired-password -uroot -p"${MYSQL_DEFAULT_PASSWORD}" </tmp/mysql
-#1. Now a default root password will be generated and given in the log file.
-# grep temp /var/log/mysqld.log
-#1. Next, We need to change the default root password in order to start using the database service. Use password `RoboShop@1` or any other as per your choice. Rest of the options you can choose `No`
-# mysql_secure_installation
-#1. You can check the new password working or not using the following command in MySQL
-#First lets connect to MySQL
-# mysql -uroot -pRoboShop@1
-#Once after login to MySQL prompt then run this SQL Command.
-#```sql
-#> uninstall plugin validate_password;
+echo "uninstall plugin validate_password;" | mysql --connect-expired-password -uroot -p"${MYSQL_PASSWORD}"
 ## **Setup Needed for Application.**
 #As per the architecture diagram, MySQL is needed by
 #- Shipping Service
