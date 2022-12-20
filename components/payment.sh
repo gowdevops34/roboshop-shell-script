@@ -9,7 +9,7 @@ cd /home/roboshop/payment
 pip3 install -r requirements.txt
 
 sed -i -e "/^uid/ c uid = $(id -u roboshop)" -e "/^gid/ c gid = $(id -g roboshop)" /home/roboshop/payment/payment.ini
-sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' /home/roboshop/payment/systemd.service
+sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/payment/systemd.service
 
 mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
 systemctl daemon-reload
