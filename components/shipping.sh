@@ -1,3 +1,6 @@
+source components/common.sh
+
+CHECK_ROOT
 yum install maven -y
 useradd roboshop
 cd /home/roboshop
