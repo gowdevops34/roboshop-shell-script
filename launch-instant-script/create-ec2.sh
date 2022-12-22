@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #### Change these values ####
-ZONE_ID=""
-SG_NAME=""
+ZONE_ID="Z01667981J2I5JJNAL4HZ"
+SG_NAME="allow-all-to-public"
 ##############################
 
 
@@ -17,11 +17,11 @@ create_ec2() {
       | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
   sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json >/tmp/record.json
-  aws rote53 change-resource-record-sets --hosted-zone-id $(ZONE_ID) --change-batch file:///tmp/record.json | jq
+  aws route53 change-resource-record-sets --hosted-zone-id $(ZONE_ID) --change-batch file:///tmp/record.json | jq
 }
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-Devops-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
-SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=${SG_NAME} | jq '.SecurityGroup[].GroupId' | sed -e 's/"//g')
+SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=${SG_NAME} | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g')
 
 if [ "$COMPONENT" == "all" ]; then
   for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis ; do
