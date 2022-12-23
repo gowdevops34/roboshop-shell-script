@@ -12,7 +12,7 @@ CHECK_STAT $?
 
 PRINT "Creating Application User"
 id roboshop &>>${LOG}
-if [ $1 -ne 0 ]; then
+if [ $? -ne 0 ]; then
   useradd roboshop &>>${LOG}
 fi
 CHECK_STAT $?
