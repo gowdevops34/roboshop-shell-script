@@ -1,3 +1,5 @@
+source components/common.sh
+
 CHECK_STAT $?
 
 PRINT "Extract Cart Content"
