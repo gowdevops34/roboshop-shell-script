@@ -8,7 +8,7 @@ SG_NAME="allow-all-to-public"
 COMPONENT=all
 create_ec2() {
   PRIVATE_IP=$(aws ec2 run-instances \
-      --image-id ${AMI_ID} \
+      --image-id "ami-07b93975b0bee3387" \
       --instance-type t2.micro \
       --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
